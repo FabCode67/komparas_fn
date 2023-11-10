@@ -1,10 +1,15 @@
+import Footer from "./components/Footer"
+import Home from "./components/Home"
+import NavBar from "./components/Navigations/NavBar"
 
 
 function App() {
 
   return (
-   <div>
-      <h1 className="komparas text-9xl min-h-screen h-fit w-full flex justify-center items-center text-center m-auto"> C'EST KOMPARAS🌠☄</h1>
+   <div className="w-full h-fit">
+    <NavBar />
+    <Home />
+    <Footer />
     </div>
   )
 }
