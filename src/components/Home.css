@@ -1,0 +1,15 @@
+.bunnerPage {
+    display: flex;
+  }
+  
+  .bunnerPage img {
+    filter: brightness(70%);
+  }
+  
+  .bunnerPage div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
