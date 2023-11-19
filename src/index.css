@@ -45,3 +45,18 @@ body::-webkit-scrollbar-track {
 body{
   background-color: rgb(211, 213, 213);
 }
+
+/* Add these styles to your component's CSS or use a separate stylesheet */
+
+.category-children {
+  display: none;
+  /* position: absolute; */
+  top: 100%;
+  left: 0;
+  /* background-color: #fff; */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.category:hover .category-children {
+  display: block;
+}

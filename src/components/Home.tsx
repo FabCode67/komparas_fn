@@ -4,6 +4,7 @@ import SearchComponent from './SearchComponent';
 import { VscChevronRight } from "react-icons/vsc";
 import { VscChevronLeft } from "react-icons/vsc";
 import './Home.css'; // Import your custom CSS file
+import CategoryIndex from './categories/CategoryIndex';
 
 const Home = () => {
   const sliderImages = [
@@ -43,6 +44,7 @@ const Home = () => {
     <div className="w-full flex flex-col min-h-screen">
       <NavIndex />
       <SearchComponent />
+      <CategoryIndex />
       <div className="w-full min-h-screen flex flex-col">
         <div className="bunnerPage w-full z-0 h-fit overflow-hidden">
           {sliderImages.map((image, index) => (
@@ -113,6 +115,7 @@ const Home = () => {
         </div>
       </div>
     </div>
+
   );
 };
 
