@@ -29,7 +29,7 @@ const CategoryView: React.FC<CategoryIndexProps> = ({ toggleCategory }) => {
       <h1 className='text-lg underline-offset-auto font-thin'>Categories</h1>
       {categories.map((category: { _id: React.Key | null | undefined; name: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; children: any; }) => (
         <div key={category._id} className="category space-y-1 relative">
-          <div className="category-name hover:bg-gray-600 rounded-sm p-1 w-full" onClick={toggleCategory}>
+          <div className="category-name hover:bg-gray-600 rounded-sm p-1 w-full" onDoubleClick={toggleCategory}>
             {category.name}
           </div>
           <div className='h-fit w-full '>
