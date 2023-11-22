@@ -5,6 +5,7 @@ import { VscChevronRight } from "react-icons/vsc";
 import { VscChevronLeft } from "react-icons/vsc";
 import './Home.css'; // Import your custom CSS file
 import CategoryIndex from './categories/CategoryIndex';
+import HomeProduct from './products/HomeProduct';
 
 const Home = () => {
   const sliderImages = [
@@ -114,6 +115,7 @@ const Home = () => {
           </button>
         </div>
       </div>
+      <HomeProduct product_name={''} product_image={''} product_price={0} product_stars={0} product_reviews={0} product_category={''} product_store={''} product_link={''} product_description={''} />
     </div>
 
   );
