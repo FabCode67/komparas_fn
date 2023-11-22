@@ -1,7 +1,7 @@
 // services/api.js
 import axios from 'axios';
 
-const baseUrl = 'https://blue-angry-gorilla.cyclic.app';
+export const baseUrl = 'https://blue-angry-gorilla.cyclic.app';
 
 
 export const fetchParentCategories = () => {
@@ -9,10 +9,6 @@ export const fetchParentCategories = () => {
 };
 
 export const getAllCategories = () => {
-    return axios.get(`${baseUrl}/categories/all`);
-    }
+  return axios.get(`${baseUrl}/categories/all`);
+}
 
-export const getAllProducts = async () => {
-    const res = axios.get(`${baseUrl}/products`);
-    return await res;
-    }
