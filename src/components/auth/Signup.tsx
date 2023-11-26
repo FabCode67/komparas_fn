@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { addUsers } from "../../api/userCrud";
+import { useNavigate } from "react-router-dom";
 
 const SignupForm = () => {
 
@@ -23,6 +24,7 @@ const SignupForm = () => {
     const [imageUrl, setImageUrl] = useState<string | null>(null);
     const [showPassword, setShowPassword] = useState(true);
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const { first_name, last_name, email, password, confirm_password } = formData;
 
@@ -102,14 +104,14 @@ const SignupForm = () => {
     
         try {
             const response = await addUsers(formData);
-            console.log("========", response);
-            
-    
             if (response.user) {
                 toast.success(response.message, {
                     position: "top-right",
                     theme: "colored",
                 });
+                setLoading(false);
+                navigate("/login");
+                
                 setFormData({
                     first_name: "",
                     last_name: "",
