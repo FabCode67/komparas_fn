@@ -18,7 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/login" element={<LoginForm />} />
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/forgot_password" element={<ForgotPasswordForm />} />
-        <Route path="/reset_password?resetToken=:token" element={<ResetPassword />} />
+        <Route path="/reset_password?resetToken=:resetToken" element={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
     <ToastContainer />

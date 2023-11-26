@@ -4,11 +4,14 @@ import { useNavigate } from 'react-router-dom';
 const UserAvatal = () => {
 
   const navigate = useNavigate();
-  const handleNavigate = () => {
+
+  const handleLogout = () => {
+    localStorage.removeItem("KomparasLoginsInfo");
     navigate('/login')
   }
     const [showProfileInfo, setShowProfileInfo] = React.useState(false);
-    const userAvatarUrl = 'https://cdn-icons-png.flaticon.com/512/6596/6596121.png';
+        const userAvatarUrl = localStorage.getItem("KomparasLoginsInfo") ? JSON.parse(localStorage.getItem("KomparasLoginsInfo")!).profile_picture : "https://cdn-icons-png.flaticon.com/512/6596/6596121.png";
+        const firstName = localStorage.getItem("KomparasLoginsInfo") ? JSON.parse(localStorage.getItem("KomparasLoginsInfo")!).first_name : "User";
     const toggleProfileInfo = () => {
       setShowProfileInfo(!showProfileInfo);
     };
@@ -22,8 +25,9 @@ const UserAvatal = () => {
         />
         {showProfileInfo && (
           <div className="absolute top-[150%] w-[6rem] right-0 z-50 bg-white p-2  flex flex-col space-y-3 rounded shadow">
-            <button className="text-sm font-semibold bg-white">Profile</button>
-            <button className="text-sm bg-white" onClick={handleNavigate}>Login</button>
+            <button className="text-sm font-semibold bg-white">{firstName}</button>
+            <button className="text-sm bg-white" onClick={handleLogout}>{
+              localStorage.getItem("KomparasLoginsInfo") ? "Logout" : "Login"}</button>
           </div>
         )}
       </div>
