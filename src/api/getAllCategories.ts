@@ -1,9 +1,6 @@
 // services/api.js
 import axios from 'axios';
-
-export const baseUrl = 'https://blue-angry-gorilla.cyclic.app';
-
-
+import { baseUrl } from '.';
 export const fetchParentCategories = () => {
   return axios.get(`${baseUrl}/categories/parents`);
 };

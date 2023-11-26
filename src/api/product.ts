@@ -1,4 +1,4 @@
-import { baseUrl } from "./getAllCategories";
+import { baseUrl } from '.';
 import axios from "axios";
 
 export const getAllProducts = async () => {

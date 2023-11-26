@@ -1,6 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const UserAvatal = () => {
+
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate('/login')
+  }
     const [showProfileInfo, setShowProfileInfo] = React.useState(false);
     const userAvatarUrl = 'https://cdn-icons-png.flaticon.com/512/6596/6596121.png';
     const toggleProfileInfo = () => {
@@ -17,7 +23,7 @@ const UserAvatal = () => {
         {showProfileInfo && (
           <div className="absolute top-[150%] w-[6rem] right-0 z-50 bg-white p-2  flex flex-col space-y-3 rounded shadow">
             <button className="text-sm font-semibold bg-white">Profile</button>
-            <button className="text-sm bg-white">Login</button>
+            <button className="text-sm bg-white" onClick={handleNavigate}>Login</button>
           </div>
         )}
       </div>
