@@ -6,8 +6,18 @@ import { VscChevronLeft } from "react-icons/vsc";
 import './Home.css'; // Import your custom CSS file
 import CategoryIndex from './categories/CategoryIndex';
 import HomeProduct from './products/HomeProduct';
+import { useSearchParams } from 'react-router-dom';
+import ResetPasswordModal from './auth/ResetPassword';
 
 const Home = () => {
+
+  const [modalIsOpen, setModalIsOpen] = React.useState(false);
+  const [searchParams] = useSearchParams();
+  const resetToken = searchParams.get("resetToken") || "";
+
+
+
+
   const sliderImages = [
     {
       url: 'https://images.pexels.com/photos/10976285/pexels-photo-10976285.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -113,7 +123,13 @@ const Home = () => {
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Contact Us
           </button>
+          <button className='bg-red-700' onClick={() => setModalIsOpen(true)}>Open Modal</button>
+
         </div>
+        <ResetPasswordModal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+      />
       </div>
       <HomeProduct product_name={''} product_image={''} product_price={0} product_stars={0} product_reviews={0} product_category={''} product_store={''} product_link={''} product_description={''} />
     </div>

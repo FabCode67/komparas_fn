@@ -10,9 +10,19 @@ import { useNavigate } from "react-router-dom";
 import { resetPassword } from "../../api/auth/login";
 import { useSearchParams } from "react-router-dom";
 
+import Modal from "react-modal";
 
 
-const ResetPassword = () => {
+
+interface ResetPasswordModalProps {
+  isOpen: boolean;
+  onRequestClose: () => void;
+}
+
+const ResetPasswordModal: React.FC<ResetPasswordModalProps> = ({
+  isOpen,
+  onRequestClose,
+}) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(true);
@@ -21,25 +31,46 @@ const ResetPassword = () => {
   const [searchParams] = useSearchParams();
   const resetToken = searchParams.get("resetToken") || "";
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     setLoading(true);
-    const res = await resetPassword({ resetToken, password, confirmPassword});
-    if(res.status===true){
-    toast.success(res.message);
-    setLoading(false);
-    navigate("/login");
-    }
-    else{
+    const res = await resetPassword({ resetToken, password, confirmPassword });
+    if (res.status === true) {
+      toast.success(res.message);
+      setLoading(false);
+      onRequestClose(); // Close the modal after submission
+      navigate("/login");
+    } else {
       toast.error(res.message);
       setLoading(false);
     }
   };
   
   return (
-    <div className="h-screen relative">
 
-      <div className="flex basis-full min-h-screen relative">
+    <Modal
+    isOpen={isOpen}
+    onRequestClose={onRequestClose}
+    contentLabel="Reset Password Modal"
+    className="modal-content"
+    overlayClassName="modal-overlay"
+    style={{
+      content: {
+        top: "50%",
+        left: "50%",
+        right: "auto",
+        bottom: "auto",
+        marginRight: "-50%",
+        transform: "translate(-50%, -50%)",
+      },
+      overlay: {
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+      },
+    }}
+  >
+    <div className="h-screen ">
+
+      <div className="flex basis-full min-h-screen">
         <div className="w-1/2 bg-[url(https://www.virajtechnologies.com/assets/img/ecomm.jpg)] bg-cover bg-no-repeat min-h-full xs:hidden tablet:hidden md:hidden  lg:block laptop:block desktop:block 2xl:block 3xl:block 4xl:block"></div>
         <div className="laptop:basis-[55%] desktop:basis-[55%] basis-[100%] text-grey-900 flex justify-center m-auto">
           <div className="form">
@@ -149,7 +180,8 @@ const ResetPassword = () => {
         </div>
       </div>
     </div>
+    </Modal>
   );
 };
 
-export default ResetPassword;
+export default ResetPasswordModal;
