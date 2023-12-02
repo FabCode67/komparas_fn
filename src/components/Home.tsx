@@ -6,6 +6,9 @@ import { VscChevronLeft } from "react-icons/vsc";
 import './Home.css'; // Import your custom CSS file
 import CategoryIndex from './categories/CategoryIndex';
 import HomeProduct from './products/HomeProduct';
+import UpdatePswdModel from './models/UpdatePswdModel';
+import { useSearchParams } from 'react-router-dom';
+
 
 const Home = () => {
   const sliderImages = [
@@ -40,6 +43,15 @@ const Home = () => {
 
     return () => clearInterval(interval);
   }, [currentSlide]);
+
+  const [searchParams] = useSearchParams();
+  const resetToken = searchParams.get("resetToken") || "";
+
+const [isOpen, setIsOpen] = React.useState(true);
+
+const toggleModal = () => {
+  setIsOpen(!isOpen);
+}
 
   return (
     <div className="w-full flex flex-col min-h-screen">
@@ -114,6 +126,9 @@ const Home = () => {
             Contact Us
           </button>
         </div>
+        {resetToken && isOpen && <UpdatePswdModel isOpen={true} onClose={toggleModal} onImport={function (): void {
+          throw new Error('Function not implemented.');
+        } } />}
       </div>
       <HomeProduct product_name={''} product_image={''} product_price={0} product_stars={0} product_reviews={0} product_category={''} product_store={''} product_link={''} product_description={''} />
     </div>
