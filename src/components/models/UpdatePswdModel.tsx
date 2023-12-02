@@ -109,8 +109,8 @@ const UpdatePswdModel: React.FC<ImportModalProps> = ({
         >
           <form className="w-full" onSubmit={handleSubmit}>
             <div className="w-full">
-              <div className="flex flex-row justify-between items-center mb-4 bg-green-100 px-3">
-                <h1 className="text-xl py-2">Update Password Information</h1>
+              <div className="flex flex-row justify-between items-center mb-4 bg-blue-100 px-3">
+                <h1 className="text-xl py-2">Reset Password Information</h1>
               </div>
               <div className="w-full h-fit flex flex-col space-y-3 ">
                 <div className="flex flex-col laptop:w-full desktop:w-full">
@@ -123,7 +123,7 @@ const UpdatePswdModel: React.FC<ImportModalProps> = ({
                       id="password"
                       data-testid="password"
                       placeholder="Enter your password"
-                      className="focus:border border-green-700 bg-grey-200 focus:border-gray-300 rounded-md h-[54px] p-2 pr-10 w-full outline-none"
+                      className="focus:border border-blue-700 bg-grey-200 focus:border-gray-300 rounded-md h-[54px] p-2 pr-10 w-full outline-none"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />
@@ -151,7 +151,7 @@ const UpdatePswdModel: React.FC<ImportModalProps> = ({
                       id="confirmPassword"
                       data-testid="confirmPassword"
                       placeholder="Enter your confirmPassword"
-                      className="focus:border border-green-700 bg-grey-200 focus:border-gray-300 rounded-md h-[54px] p-2 pr-10 w-full outline-none"
+                      className="focus:border border-blue-700 bg-grey-200 focus:border-gray-300 rounded-md h-[54px] p-2 pr-10 w-full outline-none"
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
                     />
@@ -181,7 +181,7 @@ const UpdatePswdModel: React.FC<ImportModalProps> = ({
                 <button
                   type="submit"
                   disabled={isSaveButtonDisabled}
-                  className={`bg-green-500 text-white px-4 py-2 rounded-md mr-2 ${
+                  className={`bg-blue-500 text-white px-4 py-2 rounded-md mr-2 ${
                     isSaveButtonDisabled ? "opacity-50 cursor-not-allowed" : ""
                   }`}
                 >
