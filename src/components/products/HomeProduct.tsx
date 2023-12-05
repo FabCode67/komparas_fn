@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ProdCategories from './ProdCategories';
 import { getAllProducts, getPoductByCategory } from '../../api/product';
+import { Link } from 'react-router-dom';
 
 interface IProduct {
   product_name: string;
@@ -58,9 +59,9 @@ const HomeProduct: React.FC<IProduct> = () => {
             <p className='text-2xl font-bold flex justify-center w-full items-center text-center m-auto'>No products found on that category</p>
           </div>
         )}
-      <div className='productCard grid desktop:grid-cols-5 laptop:grid-cols-5 tablet:grid-cols-3 grid-cols-2 gap-6 mt-7 mb-7'>
+      <div className='productCard grid desktop:grid-cols-5 laptop:grid-cols-5 tablet:grid-cols-3 grid-cols-2 gap-6 mt-7 mb-7' >
         {currentProducts.map((product: IProduct, index: number) => (
-          <div className='productCard1 h-fit bg-gray-200 w-full flex flex-col' key={index}>
+          <Link to={'/product/1'} className='productCard1 h-fit bg-gray-200 w-full flex flex-col' key={index}>
             <div className='productCard1Img h-[10rem]  bg-gray-400 w-full'>
               <img src={product?.product_image} alt='product' className='w-full h-full object-cover' />
             </div>
@@ -69,7 +70,7 @@ const HomeProduct: React.FC<IProduct> = () => {
               <p className='text-center'>{product?.product_name}</p>
               <p className='text-center'>From <span className='font-bold'>${product.product_price}</span> in  <span className='font-bold'>5</span> stores</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 

@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import SignupForm from './components/auth/Signup.tsx'
 import ForgotPasswordForm from './components/auth/ForgotPassword.tsx'
 import ResetPassword from './components/auth/ResetPassword.tsx'
+import SingleProductPage from './components/signleProduct/SingleProductPage.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -19,6 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/forgot_password" element={<ForgotPasswordForm />} />
         <Route path="/reset_password?resetToken=:resetToken" element={<ResetPassword />} />
+        <Route path="/product/:id" element={<SingleProductPage />} />
       </Routes>
     </BrowserRouter>
     <ToastContainer />
